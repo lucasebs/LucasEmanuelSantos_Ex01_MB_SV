@@ -1,10 +1,11 @@
 module tb();
-  loghic clk, rst;
+  logic clk, rst;
+  wire[3:0] cont1, cont2;
   
   initial
     begin 
       $dumpfile("dump.vcd");
-      $dumpfile(1);
+      $dumpvars(1);
       
       clk = 0;
       rst = 1;
@@ -20,7 +21,14 @@ module tb();
   
   contadorModulo15_1 c1(
     .clk(clk),
-    .rst(rst)
+    .rst(rst),
+    .cont(cont1)
+  );
+  
+  contadorModulo15_2 c2(
+    .clk(clk),
+    .rst(rst),
+    .cont(cont2)
   );
   
 endmodule
